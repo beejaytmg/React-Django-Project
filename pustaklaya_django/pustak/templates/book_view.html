@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="text-3xl font-bold mb-4">{{ pustak.title }}</h1>
+
+    <div id="pdf-gallery" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="bg-white p-4 rounded-lg shadow-md">
+            <object data="../..{{ pustak.pdf_file.url }}" type="application/pdf" class="w-full h-64 md:h-72 lg:h-80" aria-label="{{ pustak.title }}"></object>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Upload Book{% endblock %}
+
+{% block content %}
+    <h2 class="text-3xl font-bold mb-4">Upload Book</h2>
+
+    <form method="post" enctype="multipart/form-data" class="max-w-md mx-auto">
+        {% csrf_token %}
+
+        <!-- Customize styles for form elements -->
+        <div class="text-gray-600 mb-4">
+            <label for="id_title" class="block text-gray-600 font-bold mb-2">Title</label>
+            {{ form.title }}
+        </div>
+
+        <div class="text-gray-600 mb-4">
+            <label for="id_author" class="block text-gray-600 font-bold mb-2">Author</label>
+            {{ form.author }}
+        </div>
+
+        <div class="text-gray-600 mb-4">
+            <label for="id_book_cover" class="block text-gray-600 font-bold mb-2">Book Cover</label>
+            {{ form.book_cover }}
+        </div>
+        <div class="text-gray-600 mb-4">
+          <label for="id_info" class="block text-gray-600 font-bold mb-2">Genre</label>
+          {{ form.genre }}
+        </div>
+        <div class="text-gray-600 mb-4">
+            <label for="id_info" class="block text-gray-600 font-bold mb-2">Info</label>
+            {{ form.info }}
+        </div>
+        <div class="text-gray-600 mb-4">
+          <label for="id_info" class="block text-gray-600 font-bold mb-2">Pdf File</label>
+          {{ form.pdf_file }}
+        </div>
+
+        <button type="submit"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
+            Upload
+        </button>
+
+        {% if form.errors %}
+            <p class="text-red-500">{{ form.errors }}</p>
+        {% endif %}
+    </form>
+{% endblock %}

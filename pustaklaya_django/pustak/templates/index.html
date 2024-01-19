@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="text-3xl font-bold mb-4">Our Books</h1>
+
+    <div class="flex flex-wrap -mx-4">
+        {% for book in pustaks %}
+            <a href="{% url 'book_view' book_title=book.title|slugify %}" class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4">
+                <div class="bg-gray-800 rounded-lg overflow-hidden">
+                    <img src="{{ book.book_cover.url }}" class="w-full h-40 object-cover object-center" alt="{{ book.title }}">
+                    <div class="p-4">
+                        <h2 class="text-lg font-semibold mb-2">{{ book.title }}</h2>
+                        <p class="text-gray-400">{{ book.info }}</p>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}
